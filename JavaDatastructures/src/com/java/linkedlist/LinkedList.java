@@ -95,6 +95,85 @@ public class LinkedList {
 
 	}
 
+	/**
+	 * Remove node at the given position
+	 */
+
+	public void removeAtPosition(int position) {
+
+		if (head == null)
+			return;
+
+		Node temp = head;
+
+		if (position == 0)
+			head = temp.next;
+
+		for (int i = 0; temp != null && i < position - 1; i++) {
+			temp = temp.next;
+		}
+
+		// Position is higher than list size
+		if (temp == null)
+			return;
+
+		temp.next = temp.next.next;
+	}
+
+	/**
+	 * Remove node at last
+	 */
+	public void removeAtLast() {
+
+		if (head == null)
+			return;
+
+		if (head.next == null) {
+			head = null;
+		}
+
+		Node temp = head;
+		Node prev = null;
+
+		while (temp.next != null) {
+			prev = temp;
+			temp = temp.next;
+		}
+
+		prev.next = null;
+
+	}
+
+	/**
+	 * Get Length of list
+	 */
+
+	public int getLength() {
+
+		int count = 0;
+		Node temp = head;
+		while (temp != null) {
+			count++;
+			temp = temp.next;
+		}
+
+		return count;
+	}
+
+	public int getLengthRecusrsive(Node node) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		return 1 + getLengthRecusrsive(node.next);
+	}
+	
+	public int getLengthRec() {
+		
+		return getLengthRecusrsive(head);
+	}
+
 	public void printList() {
 
 		Node n = head;
@@ -103,30 +182,6 @@ public class LinkedList {
 			System.out.println(n.data);
 			n = n.next;
 		}
-	}
-
-	public static void main(String args[]) {
-
-		LinkedList list = new LinkedList();
-
-		java.util.LinkedList lst = new java.util.LinkedList<>();
-
-		list.insertFront(5);
-		list.insertFront(4);
-		list.insertFront(3);
-		System.out.println("List after inserting front:");
-		list.printList();
-
-		list.insertAfterGivenNode(list.head.next, 8);
-		System.out.println("List after inserting at list->head->next ");
-		list.printList();
-
-		list.insertAtTheEnd(11);
-		list.insertAtTheEnd(12);
-
-		System.out.println("List after inserting last");
-		list.printList();
-
 	}
 
 }
