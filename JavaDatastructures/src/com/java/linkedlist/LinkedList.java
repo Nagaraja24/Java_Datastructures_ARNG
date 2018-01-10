@@ -145,6 +145,114 @@ public class LinkedList {
 	}
 
 	/**
+	 * Search Iterative Approach
+	 * 
+	 * @param x
+	 * @return
+	 */
+	public boolean searchElementIterative(int x) {
+		Node current = head;
+		while (current != null) {
+			if (current.data == x) {
+				return true;
+			}
+			current = current.next;
+
+		}
+		return false;
+
+	}
+
+	/**
+	 * Search Recursive approach
+	 * 
+	 * @param head
+	 * @param x
+	 * @return
+	 */
+	public boolean searchElementRecursive(Node head, int x) {
+
+		Node current = head;
+
+		if (current == null)
+			return false;
+
+		if (current.data == x)
+			return true;
+
+		return searchElementRecursive(current.next, x);
+
+	}
+
+	/**
+	 * Swap nodes without swapping data --> assuming data is distinct
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public void swapNode(int x, int y) {
+
+		if (x == y)
+			return;
+
+		Node prevX = null, currentX = head;
+		while (currentX != null && currentX.data != x) {
+			prevX = currentX;
+			currentX = currentX.next;
+		}
+
+		Node prevY = null, currentY = head;
+		while (currentY != null && currentY.data != y) {
+			prevY = currentY;
+			currentY = currentY.next;
+		}
+
+		if (currentX == null || currentY == null)
+			return;
+
+		if (prevX != null) {
+			prevX.next = currentY;
+		} else
+			head = currentY;
+
+		if (prevY != null) {
+			prevY.next = currentX;
+		} else
+			head = currentX;
+
+		Node temp = currentX.next;
+		currentX.next = currentY.next;
+		currentY.next = temp;
+		
+		printList(head);
+
+	}
+	
+	/**
+	 * Reverse Linked List -- Iterative method
+	 * 
+	 * @param node
+	 * @return
+	 */
+	Node reverseLinkedList(Node node){
+		Node prev = null;
+		Node current = node;
+		Node next = null;
+		
+			while(current!= null) {
+				next = current.next;
+				current.next = prev;
+				prev = current;
+				current = next;
+			}
+			
+			node = prev;
+		
+		return node;
+	}
+
+	/**
 	 * Get Length of list
 	 */
 
@@ -168,15 +276,15 @@ public class LinkedList {
 
 		return 1 + getLengthRecusrsive(node.next);
 	}
-	
+
 	public int getLengthRec() {
-		
+
 		return getLengthRecusrsive(head);
 	}
 
-	public void printList() {
+	public void printList(Node node) {
 
-		Node n = head;
+		Node n = node;
 
 		while (n != null) {
 			System.out.println(n.data);

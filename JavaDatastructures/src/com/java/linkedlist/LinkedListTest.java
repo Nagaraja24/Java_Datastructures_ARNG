@@ -1,5 +1,7 @@
 package com.java.linkedlist;
 
+import com.java.linkedlist.LinkedList.Node;
+
 public class LinkedListTest {
 
 	public static void main(String[] args) {
@@ -12,29 +14,40 @@ public class LinkedListTest {
 		list.insertFront(4);
 		list.insertFront(3);
 		System.out.println("List after inserting front:");
-		list.printList();
+		list.printList(list.head);
 
 		list.insertAfterGivenNode(list.head.next, 8);
 		System.out.println("List after inserting at list->head->next ");
-		list.printList();
+		list.printList(list.head);
 
 		list.insertAtTheEnd(11);
 		list.insertAtTheEnd(12);
 		System.out.println("List after inserting last");
-		list.printList();
+		list.printList(list.head);
 
 		list.remove(12);
 		System.out.println("List after removing the key : 12");
-		list.printList();
+		list.printList(list.head);
 
 		list.removeAtPosition(2);
 		System.out.println("List after removing data at position: 2");
-		list.printList();
+		list.printList(list.head);
 
 		System.out.println("Length of list: " + list.getLength());
 		// Empty list
 		LinkedList list2 = new LinkedList();
 		System.out.println("Length of list2: " + list2.getLength());
+		System.out.println("***********************Serach Element ***********************");
+		System.out.println(list.searchElementIterative(11));
+		
+		System.out.println(list.searchElementRecursive(list.head, 4));
+		
+		System.out.println("*******************Swap*****************************");
+		list.swapNode(3, 11);
+		
+		System.out.println("**********************Reverse List********************");
+		Node node = list.reverseLinkedList(list.head);
+		list.printList(node);
 
 	}
 
