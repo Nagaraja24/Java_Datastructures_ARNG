@@ -48,6 +48,10 @@ public class LinkedListTest {
 		System.out.println("**********************Reverse List********************");
 		Node node = list.reverseLinkedList(list.head);
 		list.printList(node);
+		
+		System.out.println("******************************Find Loop*************************");
+		System.out.println("Is loop found: "+list.findLoopInLinkedList());
+		;
 
 	}
 
