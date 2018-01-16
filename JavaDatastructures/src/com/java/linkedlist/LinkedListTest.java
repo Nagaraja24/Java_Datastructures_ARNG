@@ -46,12 +46,15 @@ public class LinkedListTest {
 		list.swapNode(3, 11);
 		
 		System.out.println("**********************Reverse List********************");
-		Node node = list.reverseLinkedList(list.head);
-		list.printList(node);
+		/*Node node = list.reverseLinkedList(list.head);
+		list.printList(node);*/
 		
 		System.out.println("******************************Find Loop*************************");
+		list.head.next.next.next = list.head;
 		System.out.println("Is loop found: "+list.findLoopInLinkedList());
-		;
+		
+		//list.head.next.next.next = list.head;
+		System.out.println("");
 
 	}
 

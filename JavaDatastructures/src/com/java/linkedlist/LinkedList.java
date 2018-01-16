@@ -1,5 +1,7 @@
 package com.java.linkedlist;
 
+import java.util.HashSet;
+
 public class LinkedList {
 
 	Node head;
@@ -252,7 +254,11 @@ public class LinkedList {
 		return node;
 	}
 	
-	boolean findLoopInLinkedList() {
+	/**
+	 * Find the loop in the Linked List using slow and fast pointer(The Tortoise and the Hare Algorithm)
+	 * @return
+	 */
+	public boolean findLoopInLinkedList() {
 	        Node slow_p = head, fast_p = head;
 	        while (slow_p != null && fast_p != null && fast_p.next != null) {
 	            slow_p = slow_p.next;
@@ -264,6 +270,28 @@ public class LinkedList {
 	        }
 	        return false;
 	    }
+	
+	/**
+	 * Find loop in linked list using hashtable
+	 * @param head
+	 * @return
+	 */
+	public boolean findLoopInLinkedListUsingHashTable(Node head) {
+		
+		HashSet<Node> nodeSet = new HashSet<>();
+		
+		Node temp = head;
+		
+		while(temp!=null) {
+			if(nodeSet.contains(temp))
+				return true;
+			
+			nodeSet.add(temp);
+			
+			temp = temp.next;
+		}
+		return false;
+	}
 
 	/**
 	 * Get Length of list
