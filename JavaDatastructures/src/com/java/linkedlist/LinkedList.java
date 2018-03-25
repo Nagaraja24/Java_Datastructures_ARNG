@@ -296,7 +296,7 @@ public class LinkedList {
 	 * @param current
 	 * @return
 	 */
-	Node reverseLinkedListRecursive(Node previous, Node current) {
+	public Node reverseLinkedListRecursively(Node previous, Node current) {
 		
 		if(current.next == null) {
 			current.next = previous;
@@ -308,12 +308,17 @@ public class LinkedList {
 		current.next = previous;
 		previous = current;
 		
-		reverseLinkedListRecursive(current, nextCurrent);
+		reverseLinkedListRecursively(current, nextCurrent);
 		
 		return head;
 	}
 	
-	Node removeDuplicateFromSortedList(Node head) {
+	/**
+	 * Remove duplicates from sorted linked list
+	 * @param head
+	 * @return
+	 */
+	public Node removeDuplicateFromSortedList(Node head) {
 		
 		Node current = head;
 		Node next_next;
