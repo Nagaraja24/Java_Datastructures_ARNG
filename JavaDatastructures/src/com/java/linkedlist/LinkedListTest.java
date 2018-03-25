@@ -49,13 +49,28 @@ public class LinkedListTest {
 		/*Node node = list.reverseLinkedList(list.head);
 		list.printList(node);*/
 		
+		System.out.println("Before reverse");
+		list.printList(list.head);
+		
+		Node reversed = list.reverseLinkedListRecursive(null, list.head);
+		
+		System.out.println("After reverse");
+		list.printList(reversed);
+		
 		System.out.println("******************************Find Loop*************************");
-		list.head.next.next.next = list.head;
+		//list.head.next.next.next = list.head;
 		System.out.println("Is loop found: "+list.findLoopInLinkedList());
 		
 		//list.head.next.next.next = list.head;
-		System.out.println("");
-
+		System.out.println("********************Remove duplicates from Sorted List****************************");
+		list.insertAtTheEnd(11);
+		list.insertFront(3);
+		System.out.println("Before Removing duplicates");
+		list.printList(list.head);
+		
+		list.removeDuplicateFromSortedList(list.head);
+		System.out.println("After Removing duplicates");
+		list.printList(list.head);
 	}
 
 }

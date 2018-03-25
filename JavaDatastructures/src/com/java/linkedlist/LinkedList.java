@@ -1,5 +1,7 @@
 package com.java.linkedlist;
 
+import java.awt.Cursor;
+import java.util.Currency;
 import java.util.HashSet;
 
 public class LinkedList {
@@ -231,6 +233,39 @@ public class LinkedList {
 
 	}
 	
+	public void swapTwoNodes(int x, int y) {
+
+		if (x == y)
+			return;
+
+		Node prevX = null;
+		Node currX = head;
+		while (currX != null && currX.data != x) {
+			prevX = currX;
+			currX = currX.next;
+		}
+
+		Node prevY = null;
+		Node curry = head;
+		while (currX != null && currX.data != y) {
+			prevY = curry;
+			curry = curry.next;
+		}
+
+		if (prevX != null) {
+			prevX.next = curry;
+		} else
+			head = curry;
+
+		if (prevY != null) {
+			prevY.next = currX;
+		} else {
+			head = currX;
+		}
+
+	}
+	
+
 	/**
 	 * Reverse Linked List -- Iterative method
 	 * 
@@ -253,6 +288,50 @@ public class LinkedList {
 		
 		return node;
 	}
+	
+	/**
+	 * Reverse list recursively
+	 * 
+	 * @param previous
+	 * @param current
+	 * @return
+	 */
+	Node reverseLinkedListRecursive(Node previous, Node current) {
+		
+		if(current.next == null) {
+			current.next = previous;
+			head = current;
+			return null;
+		}
+		
+		Node nextCurrent = current.next;
+		current.next = previous;
+		previous = current;
+		
+		reverseLinkedListRecursive(current, nextCurrent);
+		
+		return head;
+	}
+	
+	Node removeDuplicateFromSortedList(Node head) {
+		
+		Node current = head;
+		Node next_next;
+
+		while (current.next != null) {
+
+			if (current.data == current.next.data) {
+				next_next = current.next.next;
+				current.next = null;
+				current.next = next_next;
+			} else {
+				current = current.next;
+			}
+		}
+		
+		return head;
+	}
+	
 	
 	/**
 	 * Find the loop in the Linked List using slow and fast pointer(The Tortoise and the Hare Algorithm)
