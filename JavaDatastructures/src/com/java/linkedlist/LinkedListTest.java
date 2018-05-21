@@ -52,7 +52,7 @@ public class LinkedListTest {
 		System.out.println("Before reverse");
 		list.printList(list.head);
 		
-		Node reversed = list.reverseLinkedListRecursive(null, list.head);
+		Node reversed = list.reverseLinkedListRecursively(null, list.head);
 		
 		System.out.println("After reverse");
 		list.printList(reversed);
