@@ -18,6 +18,7 @@ public class BinarySearch {
 
 	/**
 	 * Recursive binary search for sorted array
+	 * Time complexity is O(Log n)
 	 * 
 	 * @param array
 	 * @param left
@@ -52,6 +53,10 @@ public class BinarySearch {
 	}
 
 	/**
+	 * 
+	 * Iterative binary search for sorted array
+	 * 
+	 * Time complexity is O(Log n)
 	 * 
 	 * @param array
 	 * @param size
